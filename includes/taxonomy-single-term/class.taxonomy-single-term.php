@@ -356,6 +356,7 @@ class Taxonomy_Single_Term {
 			'selected'      => ' selected="selected"',
 			'disabled'      => '',
 			'label'         => esc_html( apply_filters( 'the_category', $term->name ) ),
+			'depth'		=> 0
 		);
 
 		$output = '';
@@ -534,7 +535,7 @@ class Taxonomy_Single_Term {
 			return $this->walker;
 		}
 		require_once( 'walker.taxonomy-single-term.php' );
-		$this->walker = new Taxonomy_Single_Term_Walker( $this->taxonomy()->hierarchical, $this->input_element );
+		$this->walker = new Taxonomy_Single_Term_Walker( $this->taxonomy()->hierarchical, $this->input_element, $this->indented );
 
 		return $this->walker;
 	}
